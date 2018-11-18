@@ -1,0 +1,1453 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .wrap{
+            position:relative;
+            width:210px;
+            left:50px;
+            top:50px;
+        }
+
+        ul{
+            padding:15px;
+            margin:9;
+            list-style:none;
+            background:#6c6669;
+            color:#ffffff;
+            border-right-width:0;
+        }
+
+        /*水平居中*/
+        li{
+            display:block;
+            height:30px;
+            line-height: 30px;
+            /* padding-left:12px; */
+            cursor:pointer;
+            font-size: 14px;
+            position:relative;
+        }
+
+        /*鼠标移动上去的背景色*/
+        li.active{
+            background:#999395;
+        }
+    
+        /*js可以很好地调用类，一般效果css实现就好*/
+        /* li span:hover{
+            color:#c81623;
+        } */
+
+        /*隐藏的类*/
+        .none{
+            display: none;
+        }
+
+        /*二级菜单*/
+        #sub{
+            position: absolute;
+            border:1px solid #f7f7f7;
+            background:#f7f7f7;
+            box-shadow:2px 0 rgba(0,0,0,.3);
+            width:600px;
+            left: 200px;
+            top:0;
+            box-sizing:border-box;
+            margin: 0px;
+            padding:10px;
+        }
+
+        .sub-content a{
+            font-style:12px;
+            color:#666;
+            text-decoration:none;
+        }
+
+        .sub-content dd a{
+            border-left:1px solid #e0e0e0;
+            padding:0 1px;
+            margin:4px 0;
+        }
+
+        .sub-content dl {
+            overflow:hidden;
+        }
+
+        .sub-content dt{
+            float: left;
+            width:90px;
+            font-weight: bold;
+            clear:left;
+            position:relative;
+        }
+
+        .sub-content dd {
+            float: left;
+            margin-left: 5px;
+            border-top:1px solid #f7f7f7;
+            margin-bottom: 5px;
+        }
+
+        .sub-content dt i{
+            width:4px;
+            height: 14px;
+            font:400 9px/14px consolas;
+            position: absolute;
+            right:5px;
+            top:5px;
+        }
+    </style>
+</head>
+<script src="../jquery-3.3.1.min.js"></script>
+<body>
+<div class="wrap" id="test">
+    <ul>
+        <li data-id="a">
+            <span>家用电器</span>
+        </li>
+        <li data-id="b">
+            <span>手机 / 运营商 / 数码</span>
+        </li>
+        <li data-id="c">
+            <span>电脑 / 办公</span>
+        </li>
+        <li data-id="d">
+            <span>家居 / 家具 / 家装 / 厨具</span>
+        </li>
+        <li data-id="e">
+            <span>男装 / 女装 / 童装 / 内衣 </span>
+        </li>
+        <li data-id="f">
+            <span>美妆 / 个护清洁 / 宠物 </span>
+        </li>
+        <li data-id="g">
+            <span>女鞋 / 箱包 / 钟表 / 珠宝 </span>
+        </li>
+        <li data-id="h">
+            <span>男鞋 / 运动 / 户外</span>
+        </li>
+        <li data-id="i">
+            <span>房产 / 汽车 / 汽车用品 </span>
+        </li>
+        <li data-id="j">
+            <span>母婴 / 玩具乐器</span>
+        </li>
+        <li data-id="k">
+            <span>食品 / 酒类 / 生鲜 / 特产</span>
+        </li>
+        <li data-id="l">
+            <span>艺术 / 礼品鲜花 / 农资绿植</span>
+        </li>
+        <li data-id="m">
+            <span>医药保健 / 计生情趣</span>
+        </li>
+        <li data-id="n">
+            <span>图书 / 文娱 / 电子书</span>
+        </li>
+        <li data-id="o">
+            <span>机票 / 酒店 / 旅游 / 生活</span>
+        </li>
+        <li data-id="p">
+            <span>理财 / 众筹 / 白条 / 保险</span>
+        </li>
+        <li data-id="q">
+            <span>安装 / 维修 / 清洗保养</span>
+        </li>
+        <li data-id="r">
+            <span>工业品</span>
+        </li>
+    </ul>
+    <div id="sub" class="none">
+        <div id="a" class="sub-content none">
+            <dl>
+                <dt>
+                    <a href="#">电视<i>&gt</i></a>
+                </dt>
+                <dd>
+                    <a href="#">曲面电视</a>
+                    <a href="#">超薄电视</a>
+                    <a href="#">HDR电视</a>
+                    <a href="#">DLED电视</a>
+                </dd>
+                <dt>
+                    <a href="#">空调<i>&gt</i></a>
+                </dt>
+                <dd>
+                    <a href="#">挂壁式空调</a>
+                    <a href="#">柜式空调</a>
+                    <a href="#">中央空调</a>
+                    <a href="#">以旧换新</a>
+                </dd>
+                <dt>
+                    <a href="#">洗衣机<i>&gt</i></a>
+                </dt>
+                <dd>
+                    <a href="#">滚筒式洗衣机</a>
+                    <a href="#">洗烘一体机</a>
+                    <a href="#">波轮洗衣机</a>
+                    <a href="#">迷你洗衣机</a>
+                </dd>
+                <dt>
+                    <a href="#">手机通讯<i>&gt</i></a>
+                </dt>
+                <dd>
+                    <a href="#">手机</a>
+                    <a href="#">对讲机</a>
+                    <a href="#">以旧换新</a>
+                    <a href="#">手机维修</a>
+                </dd>
+                <dt>
+                    <a href="#">运营商<i>&gt</i></a>
+                </dt>
+                <dd>
+                    <a href="#">合约机</a>
+                    <a href="#">选号机</a>
+                    <a href="#">固定电话</a>
+                    <a href="#">办宽带</a>
+                </dd>
+                <dt>
+                    <a href="#">手机配件<i>&gt</i></a>
+                </dt>
+                <dd>
+                    <a href="#">手机壳</a>
+                    <a href="#">贴膜</a>
+                    <a href="#">手机存储卡</a>
+                    <a href="#">数据线</a>
+                </dd>
+                <dt>
+                    <a href="#">厨具<i>&gt</i></a>
+                </dt>
+                <dd>
+                    <a href="#">烹饪锅具</a>
+                    <a href="#">刀剪配件</a>
+                    <a href="#">厨房配件</a>
+                    <a href="#">水具酒具</a>
+                </dd>
+                <dt>
+                    <a href="#">家纺<i>&gt</i></a>
+                </dt>
+                <dd>
+                    <a href="#">床品套件</a>
+                    <a href="#">被子</a>
+                    <a href="#">枕芯</a>
+                    <a href="#">蚊帐</a>
+                </dd>
+                <dt>
+                    <a href="#">生活日用<i>&gt</i></a>
+                </dt>
+                <dd>
+                    <a href="#">收纳用品</a>
+                    <a href="#">雨伞雨具</a>
+                    <a href="#">净化除味</a>
+                    <a href="#">浴室用品</a>
+                </dd>
+            </dl>
+        </div>
+        <div id="b" class="sub-content none">
+            <dl>
+                <dt>
+                    <a href="#">空调<i>&gt</i></a>
+                </dt>
+                <dd>
+                    <a href="#">挂壁式空调</a>
+                    <a href="#">柜式空调</a>
+                    <a href="#">中央空调</a>
+                    <a href="#">以旧换新</a>
+                </dd>
+                <dt>
+                    <a href="#">洗衣机<i>&gt</i></a>
+                </dt>
+                <dd>
+                    <a href="#">滚筒式洗衣机</a>
+                    <a href="#">洗烘一体机</a>
+                    <a href="#">波轮洗衣机</a>
+                    <a href="#">迷你洗衣机</a>
+                </dd>
+                <dt>
+                    <a href="#">手机通讯<i>&gt</i></a>
+                </dt>
+                <dd>
+                    <a href="#">手机</a>
+                    <a href="#">对讲机</a>
+                    <a href="#">以旧换新</a>
+                    <a href="#">手机维修</a>
+                </dd>
+                <dt>
+                    <a href="#">运营商<i>&gt</i></a>
+                </dt>
+                <dd>
+                    <a href="#">合约机</a>
+                    <a href="#">选号机</a>
+                    <a href="#">固定电话</a>
+                    <a href="#">办宽带</a>
+                </dd>
+                <dt>
+                    <a href="#">手机配件<i>&gt</i></a>
+                </dt>
+                <dd>
+                    <a href="#">手机壳</a>
+                    <a href="#">贴膜</a>
+                    <a href="#">手机存储卡</a>
+                    <a href="#">数据线</a>
+                </dd>
+                <dt>
+                    <a href="#">厨具<i>&gt</i></a>
+                </dt>
+                <dd>
+                    <a href="#">烹饪锅具</a>
+                    <a href="#">刀剪配件</a>
+                    <a href="#">厨房配件</a>
+                    <a href="#">水具酒具</a>
+                </dd>
+                <dt>
+                    <a href="#">家纺<i>&gt</i></a>
+                </dt>
+                <dd>
+                    <a href="#">床品套件</a>
+                    <a href="#">被子</a>
+                    <a href="#">枕芯</a>
+                    <a href="#">蚊帐</a>
+                </dd>
+                <dt>
+                    <a href="#">生活日用<i>&gt</i></a>
+                </dt>
+                <dd>
+                    <a href="#">收纳用品</a>
+                    <a href="#">雨伞雨具</a>
+                    <a href="#">净化除味</a>
+                    <a href="#">浴室用品</a>
+                </dd>
+            </dl>
+        </div>
+        <div id="c" class="sub-content none">
+            <dl>
+                <dt>
+                    <a href="#">电视<i>&gt</i></a>
+                </dt>
+                <dd>
+                    <a href="#">曲面电视</a>
+                    <a href="#">超薄电视</a>
+                    <a href="#">HDR电视</a>
+                    <a href="#">DLED电视</a>
+                </dd>
+                <dt>
+                    <a href="#">洗衣机<i>&gt</i></a>
+                </dt>
+                <dd>
+                    <a href="#">滚筒式洗衣机</a>
+                    <a href="#">洗烘一体机</a>
+                    <a href="#">波轮洗衣机</a>
+                    <a href="#">迷你洗衣机</a>
+                </dd>
+                <dt>
+                    <a href="#">手机通讯<i>&gt</i></a>
+                </dt>
+                <dd>
+                    <a href="#">手机</a>
+                    <a href="#">对讲机</a>
+                    <a href="#">以旧换新</a>
+                    <a href="#">手机维修</a>
+                </dd>
+                <dt>
+                    <a href="#">运营商<i>&gt</i></a>
+                </dt>
+                <dd>
+                    <a href="#">合约机</a>
+                    <a href="#">选号机</a>
+                    <a href="#">固定电话</a>
+                    <a href="#">办宽带</a>
+                </dd>
+                <dt>
+                    <a href="#">手机配件<i>&gt</i></a>
+                </dt>
+                <dd>
+                    <a href="#">手机壳</a>
+                    <a href="#">贴膜</a>
+                    <a href="#">手机存储卡</a>
+                    <a href="#">数据线</a>
+                </dd>
+                <dt>
+                    <a href="#">厨具<i>&gt</i></a>
+                </dt>
+                <dd>
+                    <a href="#">烹饪锅具</a>
+                    <a href="#">刀剪配件</a>
+                    <a href="#">厨房配件</a>
+                    <a href="#">水具酒具</a>
+                </dd>
+                <dt>
+                    <a href="#">家纺<i>&gt</i></a>
+                </dt>
+                <dd>
+                    <a href="#">床品套件</a>
+                    <a href="#">被子</a>
+                    <a href="#">枕芯</a>
+                    <a href="#">蚊帐</a>
+                </dd>
+                <dt>
+                    <a href="#">生活日用<i>&gt</i></a>
+                </dt>
+                <dd>
+                    <a href="#">收纳用品</a>
+                    <a href="#">雨伞雨具</a>
+                    <a href="#">净化除味</a>
+                    <a href="#">浴室用品</a>
+                </dd>
+            </dl>
+        </div>
+        <div id="d" class="sub-content none">
+            <dl>
+                <dt>
+                    <a href="#">电视<i>&gt</i></a>
+                </dt>
+                <dd>
+                    <a href="#">曲面电视</a>
+                    <a href="#">超薄电视</a>
+                    <a href="#">HDR电视</a>
+                    <a href="#">DLED电视</a>
+                </dd>
+                <dt>
+                    <a href="#">空调<i>&gt</i></a>
+                </dt>
+                <dd>
+                    <a href="#">挂壁式空调</a>
+                    <a href="#">柜式空调</a>
+                    <a href="#">中央空调</a>
+                    <a href="#">以旧换新</a>
+                </dd>
+                <dt>
+                    <a href="#">洗衣机<i>&gt</i></a>
+                </dt>
+                <dd>
+                    <a href="#">滚筒式洗衣机</a>
+                    <a href="#">洗烘一体机</a>
+                    <a href="#">波轮洗衣机</a>
+                    <a href="#">迷你洗衣机</a>
+                </dd>
+                <dt>
+                    <a href="#">手机通讯<i>&gt</i></a>
+                </dt>
+                <dd>
+                    <a href="#">手机</a>
+                    <a href="#">对讲机</a>
+                    <a href="#">以旧换新</a>
+                    <a href="#">手机维修</a>
+                </dd>
+                <dt>
+                    <a href="#">运营商<i>&gt</i></a>
+                </dt>
+                <dd>
+                    <a href="#">合约机</a>
+                    <a href="#">选号机</a>
+                    <a href="#">固定电话</a>
+                    <a href="#">办宽带</a>
+                </dd>
+                <dt>
+                    <a href="#">手机配件<i>&gt</i></a>
+                </dt>
+                <dd>
+                    <a href="#">手机壳</a>
+                    <a href="#">贴膜</a>
+                    <a href="#">手机存储卡</a>
+                    <a href="#">数据线</a>
+                </dd>
+                <dt>
+                    <a href="#">厨具<i>&gt</i></a>
+                </dt>
+                <dd>
+                    <a href="#">烹饪锅具</a>
+                    <a href="#">刀剪配件</a>
+                    <a href="#">厨房配件</a>
+                    <a href="#">水具酒具</a>
+                </dd>
+                <dt>
+                    <a href="#">家纺<i>&gt</i></a>
+                </dt>
+                <dd>
+                    <a href="#">床品套件</a>
+                    <a href="#">被子</a>
+                    <a href="#">枕芯</a>
+                    <a href="#">蚊帐</a>
+                </dd>
+                <dt>
+                    <a href="#">生活日用<i>&gt</i></a>
+                </dt>
+                <dd>
+                    <a href="#">收纳用品</a>
+                    <a href="#">雨伞雨具</a>
+                    <a href="#">净化除味</a>
+                    <a href="#">浴室用品</a>
+                </dd>
+            </dl>
+        </div>
+        <div id="e" class="sub-content none">
+            <dl>
+                <dt>
+                    <a href="#">电视<i>&gt</i></a>
+                </dt>
+                <dd>
+                    <a href="#">曲面电视</a>
+                    <a href="#">超薄电视</a>
+                    <a href="#">HDR电视</a>
+                    <a href="#">DLED电视</a>
+                </dd>
+                <dt>
+                    <a href="#">空调<i>&gt</i></a>
+                </dt>
+                <dd>
+                    <a href="#">挂壁式空调</a>
+                    <a href="#">柜式空调</a>
+                    <a href="#">中央空调</a>
+                    <a href="#">以旧换新</a>
+                </dd>
+                <dt>
+                    <a href="#">手机通讯<i>&gt</i></a>
+                </dt>
+                <dd>
+                    <a href="#">手机</a>
+                    <a href="#">对讲机</a>
+                    <a href="#">以旧换新</a>
+                    <a href="#">手机维修</a>
+                </dd>
+                <dt>
+                    <a href="#">运营商<i>&gt</i></a>
+                </dt>
+                <dd>
+                    <a href="#">合约机</a>
+                    <a href="#">选号机</a>
+                    <a href="#">固定电话</a>
+                    <a href="#">办宽带</a>
+                </dd>
+                <dt>
+                    <a href="#">手机配件<i>&gt</i></a>
+                </dt>
+                <dd>
+                    <a href="#">手机壳</a>
+                    <a href="#">贴膜</a>
+                    <a href="#">手机存储卡</a>
+                    <a href="#">数据线</a>
+                </dd>
+                <dt>
+                    <a href="#">厨具<i>&gt</i></a>
+                </dt>
+                <dd>
+                    <a href="#">烹饪锅具</a>
+                    <a href="#">刀剪配件</a>
+                    <a href="#">厨房配件</a>
+                    <a href="#">水具酒具</a>
+                </dd>
+                <dt>
+                    <a href="#">家纺<i>&gt</i></a>
+                </dt>
+                <dd>
+                    <a href="#">床品套件</a>
+                    <a href="#">被子</a>
+                    <a href="#">枕芯</a>
+                    <a href="#">蚊帐</a>
+                </dd>
+                <dt>
+                    <a href="#">生活日用<i>&gt</i></a>
+                </dt>
+                <dd>
+                    <a href="#">收纳用品</a>
+                    <a href="#">雨伞雨具</a>
+                    <a href="#">净化除味</a>
+                    <a href="#">浴室用品</a>
+                </dd>
+            </dl>
+        </div>
+        <div id="f" class="sub-content none">
+            <dl>
+                <dt>
+                    <a href="#">电视<i>&gt</i></a>
+                </dt>
+                <dd>
+                    <a href="#">曲面电视</a>
+                    <a href="#">超薄电视</a>
+                    <a href="#">HDR电视</a>
+                    <a href="#">DLED电视</a>
+                </dd>
+                <dt>
+                    <a href="#">空调<i>&gt</i></a>
+                </dt>
+                <dd>
+                    <a href="#">挂壁式空调</a>
+                    <a href="#">柜式空调</a>
+                    <a href="#">中央空调</a>
+                    <a href="#">以旧换新</a>
+                </dd>
+                <dt>
+                    <a href="#">洗衣机<i>&gt</i></a>
+                </dt>
+                <dd>
+                    <a href="#">滚筒式洗衣机</a>
+                    <a href="#">洗烘一体机</a>
+                    <a href="#">波轮洗衣机</a>
+                    <a href="#">迷你洗衣机</a>
+                </dd>
+                <dt>
+                    <a href="#">手机通讯<i>&gt</i></a>
+                </dt>
+                <dd>
+                    <a href="#">手机</a>
+                    <a href="#">对讲机</a>
+                    <a href="#">以旧换新</a>
+                    <a href="#">手机维修</a>
+                </dd>
+                <dt>
+                    <a href="#">运营商<i>&gt</i></a>
+                </dt>
+                <dd>
+                    <a href="#">合约机</a>
+                    <a href="#">选号机</a>
+                    <a href="#">固定电话</a>
+                </dd>
+                <dt>
+                    <a href="#">手机配件<i>&gt</i></a>
+                </dt>
+                <dd>
+                    <a href="#">手机壳</a>
+                    <a href="#">贴膜</a>
+                    <a href="#">手机存储卡</a>
+                    <a href="#">数据线</a>
+                </dd>
+                <dt>
+                    <a href="#">厨具<i>&gt</i></a>
+                </dt>
+                <dd>
+                    <a href="#">烹饪锅具</a>
+                    <a href="#">刀剪配件</a>
+                    <a href="#">厨房配件</a>
+                    <a href="#">水具酒具</a>
+                </dd>
+                <dt>
+                    <a href="#">家纺<i>&gt</i></a>
+                </dt>
+                <dd>
+                    <a href="#">床品套件</a>
+                    <a href="#">被子</a>
+                    <a href="#">枕芯</a>
+                    <a href="#">蚊帐</a>
+                </dd>
+                <dt>
+                    <a href="#">生活日用<i>&gt</i></a>
+                </dt>
+                <dd>
+                    <a href="#">收纳用品</a>
+                    <a href="#">雨伞雨具</a>
+                    <a href="#">净化除味</a>
+                    <a href="#">浴室用品</a>
+                </dd>
+            </dl>
+        </div>
+        <div id="h" class="sub-content none">
+            <dl>
+                <dt>
+                    <a href="#">电视<i>&gt</i></a>
+                </dt>
+                <dd>
+                    <a href="#">曲面电视</a>
+                    <a href="#">超薄电视</a>
+                    <a href="#">HDR电视</a>
+                    <a href="#">DLED电视</a>
+                </dd>
+                <dt>
+                    <a href="#">空调<i>&gt</i></a>
+                </dt>
+                <dd>
+                    <a href="#">挂壁式空调</a>
+                    <a href="#">柜式空调</a>
+                    <a href="#">中央空调</a>
+                    <a href="#">以旧换新</a>
+                </dd>
+                <dt>
+                    <a href="#">洗衣机<i>&gt</i></a>
+                </dt>
+                <dd>
+                    <a href="#">滚筒式洗衣机</a>
+                    <a href="#">洗烘一体机</a>
+                    <a href="#">波轮洗衣机</a>
+                    <a href="#">迷你洗衣机</a>
+                </dd>
+                <dt>
+                    <a href="#">手机通讯<i>&gt</i></a>
+                </dt>
+                <dd>
+                    <a href="#">手机</a>
+                    <a href="#">对讲机</a>
+                    <a href="#">以旧换新</a>
+                    <a href="#">手机维修</a>
+                </dd>
+                <dt>
+                    <a href="#">运营商<i>&gt</i></a>
+                </dt>
+                <dd>
+                    <a href="#">合约机</a>
+                    <a href="#">选号机</a>
+                    <a href="#">固定电话</a>
+                    <a href="#">办宽带</a>
+                </dd>
+                <dt>
+                    <a href="#">手机配件<i>&gt</i></a>
+                </dt>
+                <dd>
+                    <a href="#">手机壳</a>
+                    <a href="#">贴膜</a>
+                    <a href="#">手机存储卡</a>
+                    <a href="#">数据线</a>
+                </dd>
+                <dt>
+                    <a href="#">厨具<i>&gt</i></a>
+                </dt>
+                <dd>
+                    <a href="#">烹饪锅具</a>
+                    <a href="#">刀剪配件</a>
+                    <a href="#">厨房配件</a>
+                    <a href="#">水具酒具</a>
+                </dd>
+                <dt>
+                    <a href="#">家纺<i>&gt</i></a>
+                </dt>
+                <dd>
+                    <a href="#">床品套件</a>
+                    <a href="#">被子</a>
+                    <a href="#">枕芯</a>
+                    <a href="#">蚊帐</a>
+                </dd>
+                <dt>
+                    <a href="#">生活日用<i>&gt</i></a>
+                </dt>
+                <dd>
+                    <a href="#">收纳用品</a>
+                    <a href="#">雨伞雨具</a>
+                    <a href="#">净化除味</a>
+                    <a href="#">浴室用品</a>
+                </dd>
+            </dl>
+        </div>
+        <div id="i" class="sub-content none">
+            <dl>
+                <dt>
+                    <a href="#">电视<i>&gt</i></a>
+                </dt>
+                <dd>
+                    <a href="#">曲面电视</a>
+                    <a href="#">超薄电视</a>
+                    <a href="#">HDR电视</a>
+                    <a href="#">DLED电视</a>
+                </dd>
+                <dt>
+                    <a href="#">洗衣机<i>&gt</i></a>
+                </dt>
+                <dd>
+                    <a href="#">滚筒式洗衣机</a>
+                    <a href="#">洗烘一体机</a>
+                    <a href="#">波轮洗衣机</a>
+                    <a href="#">迷你洗衣机</a>
+                </dd>
+                <dt>
+                    <a href="#">手机通讯<i>&gt</i></a>
+                </dt>
+                <dd>
+                    <a href="#">手机</a>
+                    <a href="#">对讲机</a>
+                    <a href="#">以旧换新</a>
+                    <a href="#">手机维修</a>
+                </dd>
+                <dt>
+                    <a href="#">运营商<i>&gt</i></a>
+                </dt>
+                <dd>
+                    <a href="#">合约机</a>
+                    <a href="#">选号机</a>
+                    <a href="#">固定电话</a>
+                    <a href="#">办宽带</a>
+                </dd>
+                <dt>
+                    <a href="#">手机配件<i>&gt</i></a>
+                </dt>
+                <dd>
+                    <a href="#">手机壳</a>
+                    <a href="#">贴膜</a>
+                    <a href="#">手机存储卡</a>
+                    <a href="#">数据线</a>
+                </dd>
+                <dt>
+                    <a href="#">厨具<i>&gt</i></a>
+                </dt>
+                <dd>
+                    <a href="#">烹饪锅具</a>
+                    <a href="#">刀剪配件</a>
+                    <a href="#">厨房配件</a>
+                    <a href="#">水具酒具</a>
+                </dd>
+                <dt>
+                    <a href="#">家纺<i>&gt</i></a>
+                </dt>
+                <dd>
+                    <a href="#">床品套件</a>
+                    <a href="#">被子</a>
+                    <a href="#">枕芯</a>
+                    <a href="#">蚊帐</a>
+                </dd>
+                <dt>
+                    <a href="#">生活日用<i>&gt</i></a>
+                </dt>
+                <dd>
+                    <a href="#">收纳用品</a>
+                    <a href="#">雨伞雨具</a>
+                    <a href="#">净化除味</a>
+                    <a href="#">浴室用品</a>
+                </dd>
+            </dl>
+        </div>
+        <div id="j" class="sub-content none">
+            <dl>
+                <dt>
+                    <a href="#">电视<i>&gt</i></a>
+                </dt>
+                <dd>
+                    <a href="#">曲面电视</a>
+                    <a href="#">超薄电视</a>
+                    <a href="#">HDR电视</a>
+                    <a href="#">DLED电视</a>
+                </dd>
+                <dt>
+                    <a href="#">空调<i>&gt</i></a>
+                </dt>
+                <dd>
+                    <a href="#">挂壁式空调</a>
+                    <a href="#">柜式空调</a>
+                    <a href="#">中央空调</a>
+                    <a href="#">以旧换新</a>
+                </dd>
+                <dt>
+                    <a href="#">洗衣机<i>&gt</i></a>
+                </dt>
+                <dd>
+                    <a href="#">滚筒式洗衣机</a>
+                    <a href="#">洗烘一体机</a>
+                    <a href="#">波轮洗衣机</a>
+                    <a href="#">迷你洗衣机</a>
+                </dd>
+                <dt>
+                    <a href="#">手机通讯<i>&gt</i></a>
+                </dt>
+                <dd>
+                    <a href="#">手机</a>
+                    <a href="#">对讲机</a>
+                    <a href="#">以旧换新</a>
+                    <a href="#">手机维修</a>
+                </dd>
+                <dt>
+                    <a href="#">运营商<i>&gt</i></a>
+                </dt>
+                <dd>
+                    <a href="#">合约机</a>
+                    <a href="#">选号机</a>
+                    <a href="#">固定电话</a>
+                    <a href="#">办宽带</a>
+                </dd>
+                <dt>
+                    <a href="#">手机配件<i>&gt</i></a>
+                </dt>
+                <dd>
+                    <a href="#">手机壳</a>
+                    <a href="#">贴膜</a>
+                    <a href="#">手机存储卡</a>
+                    <a href="#">数据线</a>
+                </dd>
+                <dt>
+                    <a href="#">厨具<i>&gt</i></a>
+                </dt>
+                <dd>
+                    <a href="#">烹饪锅具</a>
+                    <a href="#">刀剪配件</a>
+                    <a href="#">厨房配件</a>
+                    <a href="#">水具酒具</a>
+                </dd>
+                <dt>
+                    <a href="#">家纺<i>&gt</i></a>
+                </dt>
+                <dd>
+                    <a href="#">床品套件</a>
+                    <a href="#">被子</a>
+                    <a href="#">枕芯</a>
+                    <a href="#">蚊帐</a>
+                </dd>
+                <dt>
+                    <a href="#">生活日用<i>&gt</i></a>
+                </dt>
+                <dd>
+                    <a href="#">收纳用品</a>
+                    <a href="#">雨伞雨具</a>
+                    <a href="#">净化除味</a>
+                    <a href="#">浴室用品</a>
+                </dd>
+            </dl>
+        </div>
+        <div id="k" class="sub-content none">
+            <dl>
+                <dt>
+                    <a href="#">空调<i>&gt</i></a>
+                </dt>
+                <dd>
+                    <a href="#">挂壁式空调</a>
+                    <a href="#">柜式空调</a>
+                    <a href="#">中央空调</a>
+                    <a href="#">以旧换新</a>
+                </dd>
+                <dt>
+                    <a href="#">洗衣机<i>&gt</i></a>
+                </dt>
+                <dd>
+                    <a href="#">滚筒式洗衣机</a>
+                    <a href="#">洗烘一体机</a>
+                    <a href="#">波轮洗衣机</a>
+                    <a href="#">迷你洗衣机</a>
+                </dd>
+                <dt>
+                    <a href="#">手机通讯<i>&gt</i></a>
+                </dt>
+                <dd>
+                    <a href="#">手机</a>
+                    <a href="#">对讲机</a>
+                    <a href="#">以旧换新</a>
+                    <a href="#">手机维修</a>
+                </dd>
+                <dt>
+                    <a href="#">运营商<i>&gt</i></a>
+                </dt>
+                <dd>
+                    <a href="#">合约机</a>
+                    <a href="#">选号机</a>
+                    <a href="#">固定电话</a>
+                    <a href="#">办宽带</a>
+                </dd>
+                <dt>
+                    <a href="#">手机配件<i>&gt</i></a>
+                </dt>
+                <dd>
+                    <a href="#">手机壳</a>
+                    <a href="#">贴膜</a>
+                    <a href="#">手机存储卡</a>
+                    <a href="#">数据线</a>
+                </dd>
+                <dt>
+                    <a href="#">厨具<i>&gt</i></a>
+                </dt>
+                <dd>
+                    <a href="#">烹饪锅具</a>
+                    <a href="#">刀剪配件</a>
+                    <a href="#">厨房配件</a>
+                    <a href="#">水具酒具</a>
+                </dd>
+                <dt>
+                    <a href="#">家纺<i>&gt</i></a>
+                </dt>
+                <dd>
+                    <a href="#">床品套件</a>
+                    <a href="#">被子</a>
+                    <a href="#">枕芯</a>
+                    <a href="#">蚊帐</a>
+                </dd>
+                <dt>
+                    <a href="#">生活日用<i>&gt</i></a>
+                </dt>
+                <dd>
+                    <a href="#">收纳用品</a>
+                    <a href="#">雨伞雨具</a>
+                    <a href="#">净化除味</a>
+                    <a href="#">浴室用品</a>
+                </dd>
+            </dl>
+        </div>
+        <div id="l" class="sub-content none">
+            <dl>
+                <dt>
+                    <a href="#">电视<i>&gt</i></a>
+                </dt>
+                <dd>
+                    <a href="#">曲面电视</a>
+                    <a href="#">超薄电视</a>
+                    <a href="#">HDR电视</a>
+                    <a href="#">DLED电视</a>
+                </dd>
+                <dt>
+                    <a href="#">空调<i>&gt</i></a>
+                </dt>
+                <dd>
+                    <a href="#">挂壁式空调</a>
+                    <a href="#">柜式空调</a>
+                    <a href="#">中央空调</a>
+                    <a href="#">以旧换新</a>
+                </dd>
+                <dt>
+                    <a href="#">洗衣机<i>&gt</i></a>
+                </dt>
+                <dd>
+                    <a href="#">滚筒式洗衣机</a>
+                    <a href="#">洗烘一体机</a>
+                    <a href="#">波轮洗衣机</a>
+                    <a href="#">迷你洗衣机</a>
+                </dd>
+                <dt>
+                    <a href="#">手机通讯<i>&gt</i></a>
+                </dt>
+                <dd>
+                    <a href="#">手机</a>
+                    <a href="#">对讲机</a>
+                    <a href="#">以旧换新</a>
+                    <a href="#">手机维修</a>
+                </dd>
+                <dt>
+                    <a href="#">运营商<i>&gt</i></a>
+                </dt>
+                <dd>
+                    <a href="#">合约机</a>
+                    <a href="#">选号机</a>
+                    <a href="#">固定电话</a>
+                    <a href="#">办宽带</a>
+                </dd>
+                <dt>
+                    <a href="#">手机配件<i>&gt</i></a>
+                </dt>
+                <dd>
+                    <a href="#">手机壳</a>
+                    <a href="#">贴膜</a>
+                    <a href="#">手机存储卡</a>
+                    <a href="#">数据线</a>
+                </dd>
+                <dt>
+                    <a href="#">厨具<i>&gt</i></a>
+                </dt>
+                <dd>
+                    <a href="#">烹饪锅具</a>
+                    <a href="#">刀剪配件</a>
+                    <a href="#">厨房配件</a>
+                    <a href="#">水具酒具</a>
+                </dd>
+                <dt>
+                    <a href="#">家纺<i>&gt</i></a>
+                </dt>
+                <dd>
+                    <a href="#">床品套件</a>
+                    <a href="#">被子</a>
+                    <a href="#">枕芯</a>
+                    <a href="#">蚊帐</a>
+                </dd>
+                <dt>
+                    <a href="#">生活日用<i>&gt</i></a>
+                </dt>
+                <dd>
+                    <a href="#">收纳用品</a>
+                    <a href="#">雨伞雨具</a>
+                    <a href="#">净化除味</a>
+                    <a href="#">浴室用品</a>
+                </dd>
+            </dl>
+        </div>
+        <div id="m" class="sub-content none">
+            <dl>
+                <dt>
+                    <a href="#">电视<i>&gt</i></a>
+                </dt>
+                <dd>
+                    <a href="#">曲面电视</a>
+                    <a href="#">超薄电视</a>
+                    <a href="#">HDR电视</a>
+                    <a href="#">DLED电视</a>
+                </dd>
+                <dt>
+                    <a href="#">洗衣机<i>&gt</i></a>
+                </dt>
+                <dd>
+                    <a href="#">滚筒式洗衣机</a>
+                    <a href="#">洗烘一体机</a>
+                    <a href="#">波轮洗衣机</a>
+                    <a href="#">迷你洗衣机</a>
+                </dd>
+                <dt>
+                    <a href="#">手机通讯<i>&gt</i></a>
+                </dt>
+                <dd>
+                    <a href="#">手机</a>
+                    <a href="#">对讲机</a>
+                    <a href="#">以旧换新</a>
+                    <a href="#">手机维修</a>
+                </dd>
+                <dt>
+                    <a href="#">运营商<i>&gt</i></a>
+                </dt>
+                <dd>
+                    <a href="#">合约机</a>
+                    <a href="#">选号机</a>
+                    <a href="#">固定电话</a>
+                    <a href="#">办宽带</a>
+                </dd>
+                <dt>
+                    <a href="#">手机配件<i>&gt</i></a>
+                </dt>
+                <dd>
+                    <a href="#">手机壳</a>
+                    <a href="#">贴膜</a>
+                    <a href="#">手机存储卡</a>
+                    <a href="#">数据线</a>
+                </dd>
+                <dt>
+                    <a href="#">厨具<i>&gt</i></a>
+                </dt>
+                <dd>
+                    <a href="#">烹饪锅具</a>
+                    <a href="#">刀剪配件</a>
+                    <a href="#">厨房配件</a>
+                    <a href="#">水具酒具</a>
+                </dd>
+                <dt>
+                    <a href="#">家纺<i>&gt</i></a>
+                </dt>
+                <dd>
+                    <a href="#">床品套件</a>
+                    <a href="#">被子</a>
+                    <a href="#">枕芯</a>
+                    <a href="#">蚊帐</a>
+                </dd>
+                <dt>
+                    <a href="#">生活日用<i>&gt</i></a>
+                </dt>
+                <dd>
+                    <a href="#">收纳用品</a>
+                    <a href="#">雨伞雨具</a>
+                    <a href="#">净化除味</a>
+                    <a href="#">浴室用品</a>
+                </dd>
+            </dl>
+        </div>
+        <div id="n" class="sub-content none">
+            <dl>
+                <dt>
+                    <a href="#">电视<i>&gt</i></a>
+                </dt>
+                <dd>
+                    <a href="#">曲面电视</a>
+                    <a href="#">超薄电视</a>
+                    <a href="#">HDR电视</a>
+                    <a href="#">DLED电视</a>
+                </dd>
+                <dt>
+                    <a href="#">空调<i>&gt</i></a>
+                </dt>
+                <dd>
+                    <a href="#">挂壁式空调</a>
+                    <a href="#">柜式空调</a>
+                    <a href="#">中央空调</a>
+                    <a href="#">以旧换新</a>
+                </dd>
+                <dt>
+                    <a href="#">洗衣机<i>&gt</i></a>
+                </dt>
+                <dd>
+                    <a href="#">滚筒式洗衣机</a>
+                    <a href="#">洗烘一体机</a>
+                    <a href="#">波轮洗衣机</a>
+                    <a href="#">迷你洗衣机</a>
+                </dd>
+                <dt>
+                    <a href="#">手机通讯<i>&gt</i></a>
+                </dt>
+                <dd>
+                    <a href="#">手机</a>
+                    <a href="#">对讲机</a>
+                    <a href="#">以旧换新</a>
+                    <a href="#">手机维修</a>
+                </dd>
+                <dt>
+                    <a href="#">运营商<i>&gt</i></a>
+                </dt>
+                <dd>
+                    <a href="#">合约机</a>
+                    <a href="#">选号机</a>
+                    <a href="#">固定电话</a>
+                    <a href="#">办宽带</a>
+                </dd>
+                <dt>
+                    <a href="#">厨具<i>&gt</i></a>
+                </dt>
+                <dd>
+                    <a href="#">烹饪锅具</a>
+                    <a href="#">刀剪配件</a>
+                    <a href="#">厨房配件</a>
+                    <a href="#">水具酒具</a>
+                </dd>
+                <dt>
+                    <a href="#">家纺<i>&gt</i></a>
+                </dt>
+                <dd>
+                    <a href="#">床品套件</a>
+                    <a href="#">被子</a>
+                    <a href="#">枕芯</a>
+                    <a href="#">蚊帐</a>
+                </dd>
+                <dt>
+                    <a href="#">生活日用<i>&gt</i></a>
+                </dt>
+                <dd>
+                    <a href="#">收纳用品</a>
+                    <a href="#">雨伞雨具</a>
+                    <a href="#">净化除味</a>
+                    <a href="#">浴室用品</a>
+                </dd>
+            </dl>
+        </div>
+        <div id="o" class="sub-content none">
+            <dl>
+                <dt>
+                    <a href="#">电视<i>&gt</i></a>
+                </dt>
+                <dd>
+                    <a href="#">曲面电视</a>
+                    <a href="#">超薄电视</a>
+                    <a href="#">HDR电视</a>
+                    <a href="#">DLED电视</a>
+                </dd>
+                <dt>
+                    <a href="#">空调<i>&gt</i></a>
+                </dt>
+                <dd>
+                    <a href="#">挂壁式空调</a>
+                    <a href="#">柜式空调</a>
+                    <a href="#">中央空调</a>
+                    <a href="#">以旧换新</a>
+                </dd>
+                <dt>
+                    <a href="#">洗衣机<i>&gt</i></a>
+                </dt>
+                <dd>
+                    <a href="#">滚筒式洗衣机</a>
+                    <a href="#">洗烘一体机</a>
+                    <a href="#">波轮洗衣机</a>
+                    <a href="#">迷你洗衣机</a>
+                </dd>
+                <dt>
+                    <a href="#">手机通讯<i>&gt</i></a>
+                </dt>
+                <dd>
+                    <a href="#">手机</a>
+                    <a href="#">对讲机</a>
+                    <a href="#">以旧换新</a>
+                    <a href="#">手机维修</a>
+                </dd>
+                <dt>
+                    <a href="#">运营商<i>&gt</i></a>
+                </dt>
+                <dd>
+                    <a href="#">合约机</a>
+                    <a href="#">选号机</a>
+                    <a href="#">固定电话</a>
+                    <a href="#">办宽带</a>
+                </dd>
+                <dt>
+                    <a href="#">手机配件<i>&gt</i></a>
+                </dt>
+                <dd>
+                    <a href="#">手机壳</a>
+                    <a href="#">贴膜</a>
+                    <a href="#">手机存储卡</a>
+                    <a href="#">数据线</a>
+                </dd>
+                <dt>
+                    <a href="#">家纺<i>&gt</i></a>
+                </dt>
+                <dd>
+                    <a href="#">床品套件</a>
+                    <a href="#">被子</a>
+                    <a href="#">枕芯</a>
+                    <a href="#">蚊帐</a>
+                </dd>
+                <dt>
+                    <a href="#">生活日用<i>&gt</i></a>
+                </dt>
+                <dd>
+                    <a href="#">收纳用品</a>
+                    <a href="#">雨伞雨具</a>
+                    <a href="#">净化除味</a>
+                    <a href="#">浴室用品</a>
+                </dd>
+            </dl>
+        </div>
+        <div id="p" class="sub-content none">
+            <dl>
+                <dt>
+                    <a href="#">面部护肤<i>&gt</i></a>
+                </dt>
+                <dd>
+                    <a href="#">补水保湿</a>
+                    <a href="#">卸妆</a>
+                    <a href="#">洁面</a>
+                </dd>
+            </dl>
+        </div>
+        <div id="q" class="sub-content none">
+            <dl>
+                <dt>
+                    <a href="#">电视<i>&gt</i></a>
+                </dt>
+                <dd>
+                    <a href="#">曲面电视</a>
+                    <a href="#">超薄电视</a>
+                    <a href="#">HDR电视</a>
+                    <a href="#">DLED电视</a>
+                </dd>
+                <dt>
+                    <a href="#">空调<i>&gt</i></a>
+                </dt>
+                <dd>
+                    <a href="#">挂壁式空调</a>
+                    <a href="#">柜式空调</a>
+                    <a href="#">中央空调</a>
+                    <a href="#">以旧换新</a>
+                </dd>
+                <dt>
+                    <a href="#">洗衣机<i>&gt</i></a>
+                </dt>
+                <dd>
+                    <a href="#">滚筒式洗衣机</a>
+                    <a href="#">洗烘一体机</a>
+                    <a href="#">波轮洗衣机</a>
+                    <a href="#">迷你洗衣机</a>
+                </dd>
+                <dt>
+                    <a href="#">手机通讯<i>&gt</i></a>
+                </dt>
+                <dd>
+                    <a href="#">手机</a>
+                    <a href="#">对讲机</a>
+                    <a href="#">以旧换新</a>
+                    <a href="#">手机维修</a>
+                </dd>
+                <dt>
+                    <a href="#">运营商<i>&gt</i></a>
+                </dt>
+                <dd>
+                    <a href="#">合约机</a>
+                    <a href="#">选号机</a>
+                    <a href="#">固定电话</a>
+                    <a href="#">办宽带</a>
+                </dd>
+                <dt>
+                    <a href="#">手机配件<i>&gt</i></a>
+                </dt>
+                <dd>
+                    <a href="#">手机壳</a>
+                    <a href="#">贴膜</a>
+                    <a href="#">手机存储卡</a>
+                    <a href="#">数据线</a>
+                </dd>
+                <dt>
+                    <a href="#">厨具<i>&gt</i></a>
+                </dt>
+                <dd>
+                    <a href="#">烹饪锅具</a>
+                    <a href="#">刀剪配件</a>
+                    <a href="#">厨房配件</a>
+                    <a href="#">水具酒具</a>
+                </dd>
+                <dt>
+                    <a href="#">生活日用<i>&gt</i></a>
+                </dt>
+                <dd>
+                    <a href="#">收纳用品</a>
+                    <a href="#">雨伞雨具</a>
+                    <a href="#">净化除味</a>
+                    <a href="#">浴室用品</a>
+                </dd>
+            </dl>
+        </div>
+        <div id="r" class="sub-content none">
+            <dl>
+                <dt>
+                    <a href="#">电视<i>&gt</i></a>
+                </dt>
+                <dd>
+                    <a href="#">曲面电视</a>
+                    <a href="#">超薄电视</a>
+                    <a href="#">HDR电视</a>
+                    <a href="#">DLED电视</a>
+                </dd>
+                <dt>
+                    <a href="#">空调<i>&gt</i></a>
+                </dt>
+                <dd>
+                    <a href="#">挂壁式空调</a>
+                    <a href="#">柜式空调</a>
+                    <a href="#">中央空调</a>
+                    <a href="#">以旧换新</a>
+                </dd>
+                <dt>
+                    <a href="#">洗衣机<i>&gt</i></a>
+                </dt>
+                <dd>
+                    <a href="#">滚筒式洗衣机</a>
+                    <a href="#">洗烘一体机</a>
+                    <a href="#">波轮洗衣机</a>
+                    <a href="#">迷你洗衣机</a>
+                </dd>
+                <dt>
+                    <a href="#">手机通讯<i>&gt</i></a>
+                </dt>
+                <dd>
+                    <a href="#">手机</a>
+                    <a href="#">对讲机</a>
+                    <a href="#">以旧换新</a>
+                    <a href="#">手机维修</a>
+                </dd>
+                <dt>
+                    <a href="#">运营商<i>&gt</i></a>
+                </dt>
+                <dd>
+                    <a href="#">合约机</a>
+                    <a href="#">选号机</a>
+                    <a href="#">固定电话</a>
+                    <a href="#">办宽带</a>
+                </dd>
+                <dt>
+                    <a href="#">手机配件<i>&gt</i></a>
+                </dt>
+                <dd>
+                    <a href="#">手机壳</a>
+                    <a href="#">贴膜</a>
+                    <a href="#">手机存储卡</a>
+                    <a href="#">数据线</a>
+                </dd>
+                <dt>
+                    <a href="#">厨具<i>&gt</i></a>
+                </dt>
+                <dd>
+                    <a href="#">烹饪锅具</a>
+                    <a href="#">刀剪配件</a>
+                    <a href="#">厨房配件</a>
+                    <a href="#">水具酒具</a>
+                </dd>
+                <dt>
+                    <a href="#">家纺<i>&gt</i></a>
+                </dt>
+                <dd>
+                    <a href="#">床品套件</a>
+                    <a href="#">被子</a>
+                    <a href="#">枕芯</a>
+                    <a href="#">蚊帐</a>
+                </dd>
+            </dl>
+        </div>
+    </div>
+</div>
+   
+</body>
+<script src="math.js"></script>
+<script src="index.js"></script>
+</html>
