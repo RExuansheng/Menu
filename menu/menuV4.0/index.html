@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<link rel="stylesheet" href="css/base.css">
+<link rel="stylesheet" href="css/index.css">
+
+<body>
+    <div class="box" id="test">
+        <ul class="main">
+            <li data-id="a"><span>家用电器</span></li>
+            <li data-id="b"><span>手机 / 运营商 / 数码</span></li>
+            <li data-id="c"><span>电脑 / 办公</span></li>
+            <li data-id="d"><span>家居 / 家具 / 家装 / 厨具</span></li>
+            <li data-id="e"><span>男装 / 女装 / 童装 / 内衣 </span></li>
+            <li data-id="f"><span>美妆 / 个护清洁 / 宠物 </span></li>
+            <li data-id="g"><span>女鞋 / 箱包 / 钟表 / 珠宝 </span></li>
+            <li data-id="h"><span>男鞋 / 运动 / 户外</span></li>
+            <li data-id="i"><span>房产 / 汽车 / 汽车用品 </span></li>
+            <li data-id="j"><span>母婴 / 玩具乐器</span></li>
+            <li data-id="k"><span>食品 / 酒类 / 生鲜 / 特产</span></li>
+            <li data-id="l"><span>艺术 / 礼品鲜花 / 农资绿植</span></li>
+            <li data-id="m"><span>医药保健 / 计生情趣</span></li>
+            <li data-id="n"><span>图书 / 文娱 / 电子书</span></li>
+            <li data-id="o"><span>机票 / 酒店 / 旅游 / 生活</span></li>
+            <li data-id="p"><span>理财 / 众筹 / 白条 / 保险</span></li>
+            <li data-id="q"><span>安装 / 维修 / 清洗保养</span></li>
+            <li data-id="r"><span>工业品</span></li>
+        </ul>
+        <div id="sub">
+            <ul id="list">
+                <script type="text/template" id="list-sub">
+                    <% for(var a = 0; a < menu.length; a++) {%>
+                        <li id="<%= menu[a][0].id %>">
+                            <% for(i in menu[a]) { %>
+                                <dl>
+                                    <dt>
+                                        <a href="<%= menu[a][i].dtsrc %>"><%= menu[a][i].name %><i>&gt</i></a>
+                                    </dt>
+                                    <% for(j in menu[a][i].info) { %>
+                                        <dd><a href="<%= menu[a][i].ddsrc[j] %>"><%= menu[a][i].info[j] %></a></dd>
+                                    <% } %>
+                                </dl>
+                            <% } %>
+                        </li>
+                    <% } %>
+                </script>
+            </ul>
+        </div>
+    </div>
+</body>
+<script src="js/jquery-3.3.1.min.js"></script>
+<script src="js/artTemplate/template-native.js"></script>
+<script src="js/list2.js"></script>
+<script src="js/list.js"></script>
+<script src="js/math.js"></script>
+<script src="js/index.js"></script>
+</html>

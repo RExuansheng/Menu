@@ -1,0 +1,94 @@
+   .box {
+       position: relative;
+       width: 210px;
+       left: 50px;
+       top: 50px;
+   }
+
+   .main {
+       padding: 15px 0px;
+       margin: 9;
+       list-style: none;
+       background: #6c6669;
+       color: #ffffff;
+       border-right-width: 0;
+   }
+
+   .main li {
+       height: 30px;
+       line-height: 30px;
+       cursor: pointer;
+       font-size: 14px;
+       position: relative;
+   }
+
+   .main li.actived {
+       background: #999395;
+   }
+
+   .main li span {
+       display: block;
+       margin-left: 15px;
+   }
+
+   .main li:hover {
+       background-color: #999395;
+   }
+
+   #sub {
+       position: absolute;
+       border: 1px solid #f7f7f7;
+       background: #f7f7f7;
+       box-shadow: 2px 0 rgba(0, 0, 0, .3);
+       width: 1000px;
+       height: 100%;
+       left: 210px;
+       top: 0;
+       box-sizing: border-box;
+       margin: 0px;
+       padding: 10px;
+       display: none;
+   }
+
+   #sub li {
+       display: none;
+   }
+
+   #sub dl {
+       overflow: hidden;
+   }
+
+   #sub dt {
+       float: left;
+       display: block;
+       width: 50px;
+       height: 30px;
+       font-weight: bold;
+       clear: left;
+       position: relative;
+       text-align: right;
+       padding-right: 20px;
+       line-height: 20px;
+   }
+
+   #sub dd {
+       float: left;
+       margin-left: 5px;
+       border-top: 1px solid #f7f7f7;
+       margin-bottom: 5px;
+   }
+
+   #sub dt i {
+       width: 4px;
+       height: 14px;
+       font: 400 9px/14px consolas;
+       position: absolute;
+       right: 5px;
+       top: 5px;
+   }
+
+   #sub dd a {
+       border-left: 1px solid #e0e0e0;
+       padding: 0 1px;
+       margin: 4px 0;
+   }
